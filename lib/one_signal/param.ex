@@ -1,7 +1,7 @@
 defmodule OneSignal.Param do
   alias OneSignal.Param
 
-  defstruct android_channel_id: nil, messages: %{}, headings: nil, platforms: nil, included_segments: nil, excluded_segments: nil, include_external_user_ids: nil, exclude_external_user_ids: nil, include_player_ids: nil, exclude_player_ids: nil, filters: [],tags: nil, data: nil, ios_params: nil, android_params: nil, adm_params: nil, wp_params: nil, chrome_params: nil, firefox_params: nil, send_after: nil, url: nil, subtitle: nil
+  defstruct android_channel_id: nil, messages: %{}, headings: nil, platforms: nil, included_segments: nil, excluded_segments: nil, include_external_user_ids: nil, exclude_external_user_ids: nil, include_player_ids: nil, exclude_player_ids: nil, filters: [],tags: nil, data: nil, ios_params: nil, android_params: nil, adm_params: nil, wp_params: nil, chrome_params: nil, firefox_params: nil, send_after: nil, url: nil, subtitle: nil, collapse_id: nil
 
   defp to_string_key({k, v}) do
     {to_string(k), v}
@@ -250,5 +250,13 @@ defmodule OneSignal.Param do
   def put_subtitle(param, nil), do: param
   def put_subtitle(param, subtitle) do
     %{param | subtitle: subtitle}
+  end
+
+  @doc """
+  Set collapse_id.
+  """
+  def put_collapse_id(param, nil), do: param
+  def put_collapse_id(param, collapse_id) do
+    %{param | collapse_id: collapse_id}
   end
 end
